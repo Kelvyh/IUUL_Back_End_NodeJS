@@ -1,4 +1,4 @@
-import Vertice from './questao1';
+import Vertice from './questao1.js';
 import promptSync from 'prompt-sync';
 var prompt = promptSync();
 
