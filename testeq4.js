@@ -1,6 +1,6 @@
 import { Aluno, Turma } from './questao4.js';
 import promptSync from 'prompt-sync';
-var prompt = promptSync();
+var prompt = promptSync({ sigint: true });
 
 //Menu para interação com ações da turma
 function main() {

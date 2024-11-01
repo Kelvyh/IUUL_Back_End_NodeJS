@@ -1,6 +1,6 @@
 import promptSync from 'prompt-sync';
 import { DateTime } from 'luxon';
-var prompt = promptSync();
+var prompt = promptSync({ sigint: true });
 
 var nome;
 var cpf;

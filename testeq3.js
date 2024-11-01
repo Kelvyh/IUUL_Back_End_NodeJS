@@ -1,7 +1,7 @@
 import Vertice from './questao1.js';
 import Poligono from './questao3.js';
 import promptSync from 'prompt-sync';
-var prompt = promptSync();
+var prompt = promptSync({ sigint: true });
 
 function main() {
     const vertices = [];
