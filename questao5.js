@@ -30,14 +30,18 @@ function adicionaMascaraCpf(cpf) {
     return cpf.substring(0, 3) + '.' + cpf.substring(3, 6) + '.' + cpf.substring(6, 9) + '-' + cpf.substring(9);
 }
 
+function testaCpf(cpf) {
+    if(cpf.length !== 11) {
+        throw new Error('CPF precisa ter exatamente 11 caracteres');
+    }
+}
+
 while(true) {
     cpf = prompt('Digite o seu CPF (somente números): ');
     try {
-        if(cpf.length !== 11) {
-            throw new Error('CPF precisa ter exatamente 11 caracteres');
-        }
-    cpfMascara = adicionaMascaraCpf(cpf);
-    cpf = Number(cpf);
+        testaCpf(cpf);
+        cpfMascara = adicionaMascaraCpf(cpf);
+        cpf = Number(cpf);
         break;
     } catch (e) {
         console.log(e.message);
@@ -82,7 +86,7 @@ function testeRendaMensal(rendaMensal) {
 }
 
 while(true) {
-    rendaMensal = prompt('Digite a sua renda mensal: ').replace(',', '.');
+    rendaMensal = prompt('Digite a sua renda mensal - Ex: 1400,00: ').replace(',', '.');
     try {
         rendaMensal = Number(rendaMensal);
         testeRendaMensal(rendaMensal);
@@ -92,13 +96,53 @@ while(true) {
     }
 }
 
+while(true) {
+    estadoCivil = prompt('Digite o seu estado civil (S - Solteiro, C - Casado, D - Divorciado ou V - Viúvo): ').toLowerCase();
+    try {
+        if(estadoCivil === 's') {
+            estadoCivil = 'Solteiro';
+        } else if(estadoCivil === 'c') {
+            estadoCivil = 'Casado';
+        } else if(estadoCivil === 'd') {
+            estadoCivil = 'Divorciado';
+        } else if(estadoCivil === 'v') {
+            estadoCivil = 'Viúvo';
+        } else {
+            throw new Error('Estado civil inválido');
+        }
+        break;
+    } catch (e) {
+        console.log(e.message);
+    }
+}
+
+function testeDependentes(dependentes) {
+    if(isNaN(dependentes)) {
+        throw new Error('Dependentes precisa ser um número inteiro');
+    }
+    if(dependentes < 0 || dependentes > 10) {
+        throw new Error('A quantidade de dependentes precisa estar entre 0 e 10');
+    }
+}
+
+while(true) {
+    dependentes = prompt('Digite a quantidade de dependentes: ');
+    try {
+        dependentes = Number(parseInt(dependentes));
+        testeDependentes(dependentes);
+        break;
+    } catch (e) {
+        console.log(e.message);
+    }
+}
 
 
-
+console.log("---------------------------------")
+console.log(">>>>> Dados do usuário <<<<<")
 console.log("Nome:", nome);
 console.log("CPF:", cpfMascara);
 console.log("Data de Nascimento:", dataNascimento.toLocaleDateString("pt-BR"));
-console.log("Renda Mensal:", rendaMensal);
+console.log("Renda Mensal:", rendaMensal.toFixed(2).replace('.', ','));
 console.log("Estado Civil:", estadoCivil);
 console.log("Dependentes:", dependentes);
 
