@@ -1,4 +1,4 @@
-import Vertice from './questao1.js';
+import Vertice from '../questão1/questao1.js';
 
 export default class Triangulo {
     #v1;

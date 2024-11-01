@@ -1,5 +1,5 @@
 import Triangulo from './questao2.js';
-import Vertice from './questao1.js';
+import Vertice from '../questão1/questao1.js';
 import promptSync from 'prompt-sync';
 var prompt = promptSync({ sigint: true });
 
